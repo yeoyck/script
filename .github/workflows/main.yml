@@ -1,7 +1,7 @@
 name: Cron Job
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 0 * * *'
 jobs:
   schedule-job:
     runs-on: ubuntu-latest
@@ -17,3 +17,27 @@ jobs:
           CF_TYPE: ${{ vars.CF_TYPE }}
         run: |
           ./ddns/cf-ddns.sh -k $CF_KEY -u $CF_EMAIL -h $CF_HOST -z $CF_ZONE -t $CF_TYPE
+name: 'Pull Request'
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+      - main
+jobs:  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: pull-request
+      env:
+          CF_KEY: ${{ vars.CF_KEY }}
+          CF_EMAIL: ${{ vars.CF_EMAIL }}
+          CF_HOST: ${{ vars.CF_HOST }}
+          CF_ZONE: ${{ vars.CF_ZONE }}
+          CF_TYPE: ${{ vars.CF_TYPE }}
+        run: |
+          ./ddns/cf-ddns.sh -k $CF_KEY -u $CF_EMAIL -h $CF_HOST -z $CF_ZONE -t $CF_TYPE
+
+
