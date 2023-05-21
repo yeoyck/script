@@ -1,9 +1,9 @@
 name: Cron Job
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '* * * * *'
 jobs:
-  my-job:
+  schedule-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
