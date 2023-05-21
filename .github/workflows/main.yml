@@ -1,0 +1,23 @@
+name: Cron Job
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run Update DDNS
+        env:
+          CF_KEY: ${{ vars.CF_KEY }}
+          CF_EMAIL: ${{ vars.CF_EMAIL }}
+          CF_HOST: ${{ vars.CF_HOST }}
+          CF_ZONE: ${{ vars.CF_ZONE }}
+          CF_TYPE: ${{ vars.CF_TYPE }}
+        run: |
+          ./ddns/cf-ddns.sh -k $CF_KEY \
+            -u  $CF_EMAIL \
+            -h $CF_HOST \ 
+            -z $CF_ZONE \
+            -t $CF_TYPE
