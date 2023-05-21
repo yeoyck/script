@@ -3,7 +3,7 @@ on:
   schedule:
     - cron: '0 0 * * *'
 jobs:
-  schedule-job:
+  update-dns:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

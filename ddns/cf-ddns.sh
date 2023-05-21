@@ -127,7 +127,7 @@ else
 fi
 
 # If WAN is changed, update cloudflare
-echo "Updating DNS to $WAN_IP"
+echo "Updating DNS to new DNS. If want confirm is correct please sign in and take a look. https://dash.cloudflare.com/login"
 
 RESPONSE=$(curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$CFZONE_ID/dns_records/$CFRECORD_ID" \
   -H "X-Auth-Email: $CFUSER" \
