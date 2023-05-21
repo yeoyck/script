@@ -29,9 +29,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: pull-request
-      env:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run Update DDNS
+        env:
           CF_KEY: ${{ vars.CF_KEY }}
           CF_EMAIL: ${{ vars.CF_EMAIL }}
           CF_HOST: ${{ vars.CF_HOST }}
