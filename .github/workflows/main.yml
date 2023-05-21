@@ -10,11 +10,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Run Update DDNS
         env:
-          CF_KEY: ${{ vars.CF_KEY }}
-          CF_EMAIL: ${{ vars.CF_EMAIL }}
-          CF_HOST: ${{ vars.CF_HOST }}
-          CF_ZONE: ${{ vars.CF_ZONE }}
-          CF_TYPE: ${{ vars.CF_TYPE }}
+          CF_KEY: ${{ secrets.CF_KEY }}
+          CF_EMAIL: ${{ secrets.CF_EMAIL }}
+          CF_HOST: ${{ secrets.CF_HOST }}
+          CF_ZONE: ${{ secrets.CF_ZONE }}
+          CF_TYPE: ${{ secrets.CF_TYPE }}
         run: |
           ./ddns/cf-ddns.sh -k $CF_KEY -u $CF_EMAIL -h $CF_HOST -z $CF_ZONE -t $CF_TYPE
 
