@@ -1,9 +1,10 @@
-name: Cron Job
+name: 'Push Request'
 on:
-  schedule:
-    - cron: '0 0 * * *'
-jobs:
-  schedule-job:
+  push:
+    branches:
+    - main
+jobs:  
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,5 +18,3 @@ jobs:
           CF_TYPE: ${{ vars.CF_TYPE }}
         run: |
           ./ddns/cf-ddns.sh -k $CF_KEY -u $CF_EMAIL -h $CF_HOST -z $CF_ZONE -t $CF_TYPE
-
-
