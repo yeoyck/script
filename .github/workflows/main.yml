@@ -16,6 +16,6 @@ jobs:
           CF_ZONE: ${{ secrets.CF_ZONE }}
           CF_TYPE: ${{ secrets.CF_TYPE }}
         run: |
-          ./ddns/cf-ddns.sh -k $CF_KEY -u $CF_EMAIL -h $CF_HOST -z $CF_ZONE -t $CF_TYPE
+          ./dns/cf-dns.sh -k $CF_KEY -u $CF_EMAIL -h $CF_HOST -z $CF_ZONE -t $CF_TYPE
 
 

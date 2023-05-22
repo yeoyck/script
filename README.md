@@ -1,3 +1,5 @@
 # Personal Useful Script
-## DDNS
-Script For Dns
+
+## DNS
+
+Script For DNS
